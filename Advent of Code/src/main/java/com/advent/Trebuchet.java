@@ -1,3 +1,6 @@
+//Solution for 2023-1 Advent of Code
+//https://adventofcode.com/2023/day/1
+
 package com.advent;
 
 import java.io.File;
