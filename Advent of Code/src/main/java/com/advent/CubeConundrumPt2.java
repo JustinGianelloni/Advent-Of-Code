@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class CubeConundrumPt2 {
 
     public static void main(String[] args) throws Exception {
-        URL resource = Trebuchet.class.getClassLoader().getResource("cube_conundrum.txt");
+        URL resource = CubeConundrumPt2.class.getClassLoader().getResource("cube_conundrum.txt");
         File file = new File(resource.toURI());
         int answer = parsePage(file);
         System.out.println("The answer is: " + answer);
@@ -27,7 +27,7 @@ public class CubeConundrumPt2 {
     private static int parseLine(String line) {
         String[] game = line.split(": ");
         String[] reveals = game[1].split("; ");
-        HashMap<String, Integer> colorCount = getInitialColors();
+        HashMap<String, Integer> colorCount = getInitialColorCount();
         for (String reveal : reveals) {
             parseReveal(colorCount, reveal);
         }
@@ -47,7 +47,7 @@ public class CubeConundrumPt2 {
         }
     }
 
-    private static HashMap<String, Integer> getInitialColors() {
+    private static HashMap<String, Integer> getInitialColorCount() {
         HashMap<String, Integer> colors = new HashMap<>();
         colors.put("red", 0);
         colors.put("green", 0);

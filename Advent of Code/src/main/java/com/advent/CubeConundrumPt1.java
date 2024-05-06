@@ -27,7 +27,7 @@ public class CubeConundrumPt1 {
     }
 
     public static void main(String[] args) throws Exception {
-        URL resource = Trebuchet.class.getClassLoader().getResource("cube_conundrum.txt");
+        URL resource = CubeConundrumPt1.class.getClassLoader().getResource("cube_conundrum.txt");
         File file = new File(resource.toURI());
         int answer = parsePage(file);
         System.out.println("The answer is: " + answer);
