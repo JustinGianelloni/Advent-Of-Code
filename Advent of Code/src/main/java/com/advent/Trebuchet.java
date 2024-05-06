@@ -7,21 +7,33 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Trebuchet {
 
-    static final Map<String, Integer> words = Map.of(
-            "one", 1,
-            "two", 2,
-            "three", 3,
-            "four", 4,
-            "five", 5,
-            "six", 6,
-            "seven", 7,
-            "eight", 8,
-            "nine", 9);
+    private static final Map<String, Integer> words;
+    static {
+        words = new LinkedHashMap<>();
+        words.put("oneight", 18);
+        words.put("twone", 21);
+        words.put("threeight", 38);
+        words.put("fiveight", 58);
+        words.put("sevenine", 79);
+        words.put("eightwo", 82);
+        words.put("eighthree", 83);
+        words.put("nineight", 98);
+        words.put("one", 1);
+        words.put("two", 2);
+        words.put("three", 3);
+        words.put("four", 4);
+        words.put("five", 5);
+        words.put("six", 6);
+        words.put("seven", 7);
+        words.put("eight", 8);
+        words.put("nine", 9);
+    }
 
     public static void main(String[] args) throws Exception {
         URL resource = Trebuchet.class.getClassLoader().getResource("trebuchet.txt");
