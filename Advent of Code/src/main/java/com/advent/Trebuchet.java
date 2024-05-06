@@ -75,10 +75,7 @@ public class Trebuchet {
         for (int i = 0; i < line.length(); i++) {
             for (Map.Entry<String, Integer> word : words.entrySet()) {
                 if (line.indexOf(word.getKey()) == i) {
-                    System.out.println("Line: " + line);
-                    System.out.println("Replacing " + word.getKey() + " with: " + word.getValue());
                     line = line.replaceFirst(word.getKey(), word.getValue().toString());
-                    System.out.println("New Line: " + line + "\n");
                 }
             }
         }
