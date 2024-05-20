@@ -2,12 +2,11 @@ package com.advent.day5;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.math.BigInteger;
 import java.net.URL;
 import java.util.*;
 
 public class Day5pt2 {
-    
+
     public static void main(String[] args) throws Exception {
         URL resource = Day5pt2.class.getClassLoader().getResource("day5.txt");
         File file = new File(resource.toURI());
