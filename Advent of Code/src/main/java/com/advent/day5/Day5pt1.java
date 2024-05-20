@@ -27,12 +27,9 @@ public class Day5pt1 {
         FarmMap lightToTemperature = getFarmMap(scanner);
         FarmMap temperatureToHumidity = getFarmMap(scanner);
         FarmMap humidityToLocation = getFarmMap(scanner);
-        long min = -1;
+        long min = Long.MAX_VALUE;
         for (long seed : seeds) {
             long location = humidityToLocation.getDestination(temperatureToHumidity.getDestination(lightToTemperature.getDestination(waterToLight.getDestination(fertilizerToWater.getDestination(soilToFertilizer.getDestination(seedToSoil.getDestination(seed)))))));
-            if (min == -1) {
-                min = location;
-            }
             if (location < min) {
                 min = location;
             }
@@ -59,5 +56,4 @@ public class Day5pt1 {
         }
         return new FarmMap(list.toArray(new String[0]));
     }
-
 }
