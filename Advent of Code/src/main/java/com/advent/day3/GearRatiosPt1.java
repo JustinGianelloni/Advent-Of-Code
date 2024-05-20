@@ -1,4 +1,4 @@
-package com.advent;
+package com.advent.day3;
 
 import com.advent.gearratios.Grid;
 

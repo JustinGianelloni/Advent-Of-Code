@@ -1,7 +1,7 @@
 //Solution for 2023-2 Advent of Code
 //https://adventofcode.com/2023/day/2
 
-package com.advent;
+package com.advent.day2;
 
 import java.io.File;
 import java.io.FileNotFoundException;
