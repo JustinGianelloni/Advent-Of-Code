@@ -18,7 +18,7 @@ public class SeedMap {
     }
 
     public boolean hasNext() {
-        if (!seeds[pointer].hasNext() && pointer == seeds.length) {
+        if (!seeds[pointer].hasNext() && pointer + 1 == seeds.length) {
             return false;
         }
         return true;
