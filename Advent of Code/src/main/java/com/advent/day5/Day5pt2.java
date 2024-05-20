@@ -2,13 +2,14 @@ package com.advent.day5;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigInteger;
 import java.net.URL;
 import java.util.*;
 
-public class Day5pt1 {
-
+public class Day5pt2 {
+    
     public static void main(String[] args) throws Exception {
-        URL resource = Day5pt1.class.getClassLoader().getResource("day5.txt");
+        URL resource = Day5pt2.class.getClassLoader().getResource("day5.txt");
         File file = new File(resource.toURI());
         long answer = parsePage(file);
         System.out.println("The answer is: " + answer);
@@ -16,7 +17,7 @@ public class Day5pt1 {
 
     private static long parsePage(File file) throws FileNotFoundException {
         Scanner scanner = new Scanner(file);
-        Set<Long> seeds = getSeeds(scanner.nextLine());
+        SeedMap seeds = new SeedMap(scanner.nextLine());
         scanner.nextLine(); //skip first blank line
         FarmMap seedToSoil = getFarmMap(scanner);
         FarmMap soilToFertilizer = getFarmMap(scanner);
@@ -26,22 +27,14 @@ public class Day5pt1 {
         FarmMap temperatureToHumidity = getFarmMap(scanner);
         FarmMap humidityToLocation = getFarmMap(scanner);
         long min = Long.MAX_VALUE;
-        for (long seed : seeds) {
-            long location = humidityToLocation.getDestination(temperatureToHumidity.getDestination(lightToTemperature.getDestination(waterToLight.getDestination(fertilizerToWater.getDestination(soilToFertilizer.getDestination(seedToSoil.getDestination(seed)))))));
+        while (seeds.hasNext()) {
+            long location = humidityToLocation.getDestination(temperatureToHumidity.getDestination(lightToTemperature.getDestination(waterToLight.getDestination(fertilizerToWater.getDestination(soilToFertilizer.getDestination(seedToSoil.getDestination(seeds.getNext())))))));
             if (location < min) {
+                System.out.println("New min found: " + location);
                 min = location;
             }
         }
         return min;
-    }
-
-    private static Set<Long> getSeeds(String firstLine) {
-        String[] split = firstLine.split(": ")[1].split(" ");
-        Set<Long> seeds = new HashSet<>(split.length);
-        for (String seed : split) {
-            seeds.add(Long.parseLong(seed));
-        }
-        return seeds;
     }
 
     private static FarmMap getFarmMap(Scanner scanner) {
