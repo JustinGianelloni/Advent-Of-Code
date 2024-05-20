@@ -19,7 +19,10 @@ public class SeedMap {
 
     public boolean hasNext() {
         if (!seeds[pointer].hasNext()) {
-            pointer++;
+            if (pointer == seeds.length) {
+                return false;
+            }
+            return true;
         }
         return pointer < seeds.length;
     }
