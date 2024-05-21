@@ -24,7 +24,7 @@ public class Day6pt2 {
 
     private static int runRace(LongRace race) {
         int waysToWin = 0;
-        for (int speed = 1; speed < race.getTime(); speed++) {
+        for (long speed = 1; speed < race.getTime(); speed++) {
             if ((race.getTime() - speed) * speed > race.getDistance()) {
                 waysToWin++;
             }
