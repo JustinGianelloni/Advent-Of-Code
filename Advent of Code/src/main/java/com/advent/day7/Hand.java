@@ -21,7 +21,7 @@ public class Hand {
         JACK (11),
         QUEEN (12),
         KING (13),
-        ACE ( 14);
+        ACE (14);
 
         private final int value;
 
@@ -108,13 +108,13 @@ public class Hand {
     }
 
     private boolean isTwoPair() {
-        int check = 0;
-        for (Card card : hand) {
-            if (card.getValue() == 2) {
-                check++;
+        int pairs = 0;
+        for (Map.Entry<Card, Integer> set : cardCount.entrySet()) {
+            if (set.getValue() == 2) {
+                pairs++;
             }
         }
-        if (check == 2) {
+        if (pairs == 2) {
             return true;
         }
         return false;
