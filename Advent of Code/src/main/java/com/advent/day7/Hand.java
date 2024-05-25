@@ -1,14 +1,13 @@
 package com.advent.day7;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Hand {
 
     public enum Card {
+        JOKER (1),
         TWO (2),
         THREE (3),
         FOUR (4),
@@ -46,44 +45,46 @@ public class Hand {
         public int getValue() { return value; }
     }
 
-    public static final Map<Character, Card> cardMap;
-    static {
-        Map<Character, Card> map = HashMap.newHashMap(13);
-        map.put('2', Card.TWO);
-        map.put('3', Card.THREE);
-        map.put('4', Card.FOUR);
-        map.put('5', Card.FIVE);
-        map.put('6', Card.SIX);
-        map.put('7', Card.SEVEN);
-        map.put('8', Card.EIGHT);
-        map.put('9', Card.NINE);
-        map.put('T', Card.TEN);
-        map.put('J', Card.JACK);
-        map.put('Q', Card.QUEEN);
-        map.put('K', Card.KING);
-        map.put('A', Card.ACE);
-        cardMap = Collections.unmodifiableMap(map);
-    }
+    protected final String description;
+    protected Map<Character, Card> cardMap = HashMap.newHashMap(14);
+    protected Card[] hand = new Card[5];
+    protected final int bid;
+    protected final HandType handType;
+    protected HashMap<Card, Integer> cardCount = new HashMap<>();
 
-    private final Card[] hand = new Card[5];
-    private final int bid;
-    private final HandType handType;
-    private final HashMap<Card, Integer> cardCount = new HashMap<>();
-
-    public Hand(char[] cards, int bid) {
+    public Hand(String cards, int bid) {
+        this.description = cards;
         this.bid = bid;
-        buildHand(cards);
+        buildCardMap();
+        buildHand(cards.toCharArray());
         countCards();
         handType = determineHandType();
     }
 
-    private void countCards() {
+    private void buildCardMap() {
+        cardMap.put('2', Card.TWO);
+        cardMap.put('3', Card.THREE);
+        cardMap.put('4', Card.FOUR);
+        cardMap.put('5', Card.FIVE);
+        cardMap.put('6', Card.SIX);
+        cardMap.put('7', Card.SEVEN);
+        cardMap.put('8', Card.EIGHT);
+        cardMap.put('9', Card.NINE);
+        cardMap.put('T', Card.TEN);
+        cardMap.put('J', Card.JACK);
+        cardMap.put('Q', Card.QUEEN);
+        cardMap.put('K', Card.KING);
+        cardMap.put('A', Card.ACE);
+        cardMap.put('X', Card.JOKER);
+    }
+
+    protected void countCards() {
         for (Card card : hand) {
             cardCount.merge(card, 1, Integer::sum);
         }
     }
 
-    private HandType determineHandType() {
+    protected HandType determineHandType() {
         if (isFullHouse()) {
             return HandType.FULL_HOUSE;
         }
@@ -99,15 +100,15 @@ public class Hand {
         };
     }
 
-    private int getHighestMatchCount() {
+    protected int getHighestMatchCount() {
         return Collections.max(cardCount.values());
     }
 
-    private boolean isFullHouse() {
+    protected boolean isFullHouse() {
         return cardCount.containsValue(3) && cardCount.containsValue(2);
     }
 
-    private boolean isTwoPair() {
+    protected boolean isTwoPair() {
         int pairs = 0;
         for (Map.Entry<Card, Integer> set : cardCount.entrySet()) {
             if (set.getValue() == 2) {
@@ -120,7 +121,7 @@ public class Hand {
         return false;
     }
 
-    private void buildHand(char[] cards) {
+    protected void buildHand(char[] cards) {
         for (int i = 0; i < cards.length; i++) {
             hand[i] = cardMap.get(cards[i]);
         }
@@ -133,4 +134,7 @@ public class Hand {
     }
 
     public HandType getHandType() { return handType; }
+
+    @Override
+    public String toString() { return description; }
 }

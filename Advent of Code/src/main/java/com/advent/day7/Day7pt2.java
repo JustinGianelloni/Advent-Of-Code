@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Day7pt1 {
+public class Day7pt2 {
 
     public static void main(String[] args) throws Exception {
-        URL resource = Day7pt1.class.getClassLoader().getResource("day7.txt");
+        URL resource = Day7pt2.class.getClassLoader().getResource("day7.txt");
         File file = new File(resource.toURI());
         int answer = parsePage(file);
         System.out.println("The answer is: " + answer);
@@ -65,7 +65,13 @@ public class Day7pt1 {
         ArrayList<Hand> hands = new ArrayList<>();
         while (scanner.hasNextLine()) {
             String[] split = scanner.nextLine().split("\\s");
-            hands.add(new Hand(split[0], Integer.parseInt(split[1])));
+            char[] cards = split[0].toCharArray();
+            for (int i = 0; i < cards.length; i++) {
+                if (cards[i] == 'J') {
+                    cards[i] = 'X';
+                }
+            }
+            hands.add(new WildHand(new String(cards), Integer.parseInt(split[1])));
         }
         return hands.toArray(new Hand[0]);
     }
