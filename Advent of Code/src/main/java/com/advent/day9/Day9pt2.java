@@ -1,3 +1,8 @@
+//Solution for 2023-9:2 Advent of Code
+//https://adventofcode.com/2023/day/9
+//Author: Justin Gianelloni
+//Date: May, 2024
+
 package com.advent.day9;
 
 import java.io.File;
