@@ -39,10 +39,10 @@ public class Day8pt2 {
                 instructions.resetPointer();
             }
         }
-        return getLCM(cycles.toArray(new Long[0]));
+        return lcm(cycles.toArray(new Long[0]));
     }
 
-    public static long getLCM(Long[] cycles) {
+    public static long lcm(Long[] cycles) {
         long lcm = cycles[0];
         for (int i = 1; i < cycles.length; i++) {
             long currentNumber = cycles[i];
