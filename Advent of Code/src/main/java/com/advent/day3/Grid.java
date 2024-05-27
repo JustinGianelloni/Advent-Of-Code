@@ -1,4 +1,4 @@
-package com.advent.gearratios;
+package com.advent.day3;
 
 import java.io.File;
 import java.io.FileNotFoundException;

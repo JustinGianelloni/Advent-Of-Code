@@ -1,6 +1,9 @@
-package com.advent.day4;
+//Solution for 2023-4:1 Advent of Code
+//https://adventofcode.com/2023/day/4
+//Author: Justin Gianelloni
+//Date: May, 2024
 
-import com.advent.day3.GearRatiosPt1;
+package com.advent.day4;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +13,7 @@ import java.util.Scanner;
 public class Day4pt1 {
 
     public static void main(String[] args) throws Exception {
-        URL resource = GearRatiosPt1.class.getClassLoader().getResource("day4.txt");
+        URL resource = Day4pt1.class.getClassLoader().getResource("day4.txt");
         File file = new File(resource.toURI());
         int answer = parsePage(file);
         System.out.println("The answer is: " + answer);

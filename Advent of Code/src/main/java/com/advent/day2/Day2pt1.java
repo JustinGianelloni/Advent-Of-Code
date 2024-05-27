@@ -1,5 +1,7 @@
-//Solution for 2023-2 Advent of Code
+//Solution for 2023-2:1 Advent of Code
 //https://adventofcode.com/2023/day/2
+//Author: Justin Gianelloni
+//Date: May, 2024
 
 package com.advent.day2;
 
@@ -8,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.Scanner;
 
-public class CubeConundrumPt1 {
+public class Day2pt1 {
 
     private enum Colors {
         red(12),
@@ -27,7 +29,7 @@ public class CubeConundrumPt1 {
     }
 
     public static void main(String[] args) throws Exception {
-        URL resource = CubeConundrumPt1.class.getClassLoader().getResource("cube_conundrum.txt");
+        URL resource = Day2pt1.class.getClassLoader().getResource("day2.txt");
         File file = new File(resource.toURI());
         int answer = parsePage(file);
         System.out.println("The answer is: " + answer);

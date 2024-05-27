@@ -1,3 +1,8 @@
+//Solution for 2023-2:2 Advent of Code
+//https://adventofcode.com/2023/day/2
+//Author: Justin Gianelloni
+//Date: May, 2024
+
 package com.advent.day2;
 
 import java.io.File;
@@ -6,10 +11,10 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class CubeConundrumPt2 {
+public class Day2pt2 {
 
     public static void main(String[] args) throws Exception {
-        URL resource = CubeConundrumPt2.class.getClassLoader().getResource("cube_conundrum.txt");
+        URL resource = Day2pt2.class.getClassLoader().getResource("day2.txt");
         File file = new File(resource.toURI());
         int answer = parsePage(file);
         System.out.println("The answer is: " + answer);

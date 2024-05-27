@@ -1,6 +1,9 @@
-package com.advent.day3;
+//Solution for 2023-3:1 Advent of Code
+//https://adventofcode.com/2023/day/3
+//Author: Justin Gianelloni
+//Date: May, 2024
 
-import com.advent.gearratios.Grid;
+package com.advent.day3;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,12 +12,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GearRatiosPt1 {
+public class Day3pt1 {
 
     private final static List<Character> symbols = Arrays.asList('#', '*', '$', '%', '+', '@', '&', '-', '=', '/');
 
     public static void main(String[] args) throws Exception {
-        URL resource = GearRatiosPt1.class.getClassLoader().getResource("gear_ratios.txt");
+        URL resource = Day3pt1.class.getClassLoader().getResource("day3.txt");
         File file = new File(resource.toURI());
         int answer = parsePage(file);
         System.out.println("The answer is: " + answer);

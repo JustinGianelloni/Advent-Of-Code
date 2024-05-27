@@ -1,5 +1,7 @@
-//Solution for 2023-1 Advent of Code
+//Solution for 2023-1:1&2 Advent of Code
 //https://adventofcode.com/2023/day/1
+//Author: Justin Gianelloni
+//Date: May, 2024
 
 package com.advent.day1;
 
@@ -11,7 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Trebuchet {
+public class Day1Pt1and2 {
 
     private static final Map<String, Integer> words;
     static {
@@ -36,7 +38,7 @@ public class Trebuchet {
     }
 
     public static void main(String[] args) throws Exception {
-        URL resource = Trebuchet.class.getClassLoader().getResource("trebuchet.txt");
+        URL resource = Day1Pt1and2.class.getClassLoader().getResource("day1.txt");
         File file = new File(resource.toURI());
         int part1 = parsePage(file, 1);
         System.out.println("Part 1 Answer: " + part1);
